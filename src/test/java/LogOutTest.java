@@ -1,4 +1,3 @@
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -6,8 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
-public  class LoginTest {
+public class LogOutTest {
 
     private WebDriver driver ;
 
@@ -15,7 +13,6 @@ public  class LoginTest {
     public void init(){
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver=new ChromeDriver();
-
     }
     @Test
     public void loginWithValidCredentials(){
@@ -27,9 +24,14 @@ public  class LoginTest {
         driver.findElement(By.cssSelector("[title='Log In']")).click();
         driver.findElement(By.id("email")).sendKeys("anablandiana1@island.ro");
         driver.findElement(By.id("pass")).sendKeys("anaaremere");
-        driver.findElement(By.id("send2")).click();}
-    @After
-        public void close(){
-        driver.quit();}
+        driver.findElement(By.id("send2")).click();
+        driver.findElement(By.cssSelector(".skip-account .label")).click();
+        driver.findElement(By.cssSelector("[title='Log Out']")).click();
+    }
 
+        
+
+    @After
+    public void close(){
+        driver.quit();}
 }
